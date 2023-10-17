@@ -10,6 +10,9 @@ import {
 import AddCoffee from './AddCoffee';
 import UpdateCoffee from './UpdateCoffee';
 import Layout from '../Layout';
+import AuthProvider from './AuthProvider';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: '/updatecoffee/:id',
         element: <UpdateCoffee></UpdateCoffee>
+      },
+      {
+        path:'/login',
+        element:<SignIn></SignIn>
+      },
+      {
+        path: '/signup',
+        element: <SignUp></SignUp>
       }
     ]
   }
@@ -37,7 +48,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
 
