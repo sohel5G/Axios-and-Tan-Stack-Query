@@ -8,7 +8,7 @@ const UpdateCoffee = () => {
     const { name, chef, supplier, taste, category, price, details, photo_url } = coffee;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/coffees/${id}`)
+        fetch(`https://coffee-store-auth-server-kvgqm5vyf.vercel.app/coffees/${id}`)
             .then(res => res.json())
             .then(data => {
                 setCoffee(data)
@@ -30,7 +30,7 @@ const UpdateCoffee = () => {
 
         const coffee = { name, chef, supplier, taste, category, price, details, photo_url };
 
-        fetch(`http://localhost:5000/coffees/${id}`, {
+        fetch(`https://coffee-store-auth-server-kvgqm5vyf.vercel.app/coffees/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

@@ -10,13 +10,13 @@ function Coffees() {
 
   const handleDelete = id => {
 
-    fetch(`http://localhost:5000/coffees/${id}`, {
+    fetch(`https://coffee-store-auth-server-kvgqm5vyf.vercel.app/coffees/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
       .then(data => {
-        if (data.deletedCount > 0){
-          const rmainingCoffee = coffees.filter( coffee => coffee._id !== id )
+        if (data.deletedCount > 0) {
+          const rmainingCoffee = coffees.filter(coffee => coffee._id !== id)
           setCoffees(rmainingCoffee)
         }
         console.log(data)

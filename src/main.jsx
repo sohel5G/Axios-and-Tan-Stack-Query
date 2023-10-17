@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Coffees></Coffees>,
-        loader: () => fetch('http://localhost:5000/coffees')
+        loader: () => fetch('https://coffee-store-auth-server-kvgqm5vyf.vercel.app/coffees')
       },
       {
         path: '/addcoffee',
@@ -33,8 +33,8 @@ const router = createBrowserRouter([
         element: <UpdateCoffee></UpdateCoffee>
       },
       {
-        path:'/login',
-        element:<SignIn></SignIn>
+        path: '/login',
+        element: <SignIn></SignIn>
       },
       {
         path: '/signup',
