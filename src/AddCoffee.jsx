@@ -17,7 +17,7 @@ const AddCoffee = () => {
 
         const coffee = { name, chef, supplier, taste, category, price, details, photo_url };
 
-        fetch('https://coffee-store-auth-server-kvgqm5vyf.vercel.app/coffees', {
+        fetch('https://coffee-store-auth-server.vercel.app/coffees', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

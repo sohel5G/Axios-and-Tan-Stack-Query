@@ -10,7 +10,7 @@ function Coffees() {
 
   const handleDelete = id => {
 
-    fetch(`https://coffee-store-auth-server-kvgqm5vyf.vercel.app/coffees/${id}`, {
+    fetch(`https://coffee-store-auth-server.vercel.app/coffees/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
