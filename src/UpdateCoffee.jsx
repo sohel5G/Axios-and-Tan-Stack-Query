@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -8,11 +9,15 @@ const UpdateCoffee = () => {
     const { name, chef, supplier, taste, category, price, details, photo_url } = coffee;
 
     useEffect(() => {
-        fetch(`https://coffee-store-auth-server.vercel.app/coffees/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                setCoffee(data)
-            })
+        axios.get(`http://localhost:3000/coffees/${id}`)
+        .then(res => setCoffee(res.data))
+
+        // fetch(`http://localhost:3000/coffees/${id}`)
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         setCoffee(data)
+        //     })
+
     }, [id])
 
     const updateCoffee = event => {
@@ -30,17 +35,22 @@ const UpdateCoffee = () => {
 
         const coffee = { name, chef, supplier, taste, category, price, details, photo_url };
 
-        fetch(`https://coffee-store-auth-server.vercel.app/coffees/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(coffee)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-            })
+        axios.put(`http://localhost:3000/coffees/${id}`,coffee)
+        .then(res => console.log(res.data))
+
+
+        // fetch(`http://localhost:3000/coffees/${id}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(coffee)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data)
+        //     })
+
     }
 
 

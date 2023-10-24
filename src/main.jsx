@@ -14,6 +14,14 @@ import AuthProvider from './AuthProvider';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+import Coffees_Tan_Stack_Query from './Coffees_Tan_Stack_Query';
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,8 +29,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Coffees></Coffees>,
-        loader: () => fetch('https://coffee-store-auth-server.vercel.app/coffees')
+        element: <Coffees></Coffees>
       },
       {
         path: '/addcoffee',
@@ -39,18 +46,25 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUp></SignUp>
+      },
+      {
+        path: 'coffees_tan_stack_query',
+        element: <Coffees_Tan_Stack_Query></Coffees_Tan_Stack_Query>
       }
     ]
   }
 
 ]);
 
+const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 )
 

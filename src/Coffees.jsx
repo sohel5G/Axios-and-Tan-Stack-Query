@@ -1,26 +1,38 @@
 // import one from "../src/assets/images/1.png"
-
-import { useLoaderData } from "react-router-dom"
 import Coffee from "./Coffee";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Coffees() {
-  const loadedCoffees = useLoaderData();
-  const [coffees, setCoffees] = useState(loadedCoffees)
+  const [coffees, setCoffees] = useState([])
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/coffees')
+      .then(res => setCoffees(res.data))
+  }, [])
+
 
   const handleDelete = id => {
-
-    fetch(`https://coffee-store-auth-server.vercel.app/coffees/${id}`, {
-      method: 'DELETE'
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.deletedCount > 0) {
+    axios.delete(`http://localhost:3000/coffees/${id}`)
+      .then(res => {
+        if (res.data.deletedCount > 0) {
           const rmainingCoffee = coffees.filter(coffee => coffee._id !== id)
           setCoffees(rmainingCoffee)
         }
-        console.log(data)
+        console.log(res.data)
       })
+
+    // fetch(`http://localhost:3000/coffees/${id}`, {
+    //   method: 'DELETE'
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     if (data.deletedCount > 0) {
+    //       const rmainingCoffee = coffees.filter(coffee => coffee._id !== id)
+    //       setCoffees(rmainingCoffee)
+    //     }
+    //     console.log(data)
+    //   })
 
   }
 
