@@ -7,13 +7,13 @@ function Coffees() {
   const [coffees, setCoffees] = useState([])
 
   useEffect(() => {
-    axios.get('http://localhost:3000/coffees')
+    axios.get('https://coffee-store-auth-server.vercel.app/coffees')
       .then(res => setCoffees(res.data))
   }, [])
 
 
   const handleDelete = id => {
-    axios.delete(`http://localhost:3000/coffees/${id}`)
+    axios.delete(`https://coffee-store-auth-server.vercel.app/coffees/${id}`)
       .then(res => {
         if (res.data.deletedCount > 0) {
           const rmainingCoffee = coffees.filter(coffee => coffee._id !== id)
@@ -22,7 +22,7 @@ function Coffees() {
         console.log(res.data)
       })
 
-    // fetch(`http://localhost:3000/coffees/${id}`, {
+    // fetch(`https://coffee-store-auth-server.vercel.app/coffees/${id}`, {
     //   method: 'DELETE'
     // })
     //   .then(res => res.json())

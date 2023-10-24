@@ -20,21 +20,21 @@ const AddCoffee = () => {
 
         // Using Axios 
 
-        axios.post('http://localhost:3000/coffees', coffee)
-        .then( res => {
-            if (res.data.insertedId) {
-                swal({
-                    title: "Coffee added!",
-                    text: "coffee added successfully",
-                    icon: "success",
-                });
-            }
-            console.log(res.data);
-        } )
+        axios.post('https://coffee-store-auth-server.vercel.app/coffees', coffee)
+            .then(res => {
+                if (res.data.insertedId) {
+                    swal({
+                        title: "Coffee added!",
+                        text: "coffee added successfully",
+                        icon: "success",
+                    });
+                }
+                console.log(res.data);
+            })
 
 
         // //Using fetch 
-        // fetch('http://localhost:3000/coffees', {
+        // fetch('https://coffee-store-auth-server.vercel.app/coffees', {
         //     method: 'POST',
         //     headers: {
         //         'Content-Type': 'application/json'

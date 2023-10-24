@@ -7,7 +7,7 @@ const Coffees_Tan_Stack_Query = () => {
   const { data: coffees, isPending, isError, error } = useQuery({
     queryKey: ['coffees'],
     queryFn: async () => {
-      const res = await fetch('http://localhost:3000/coffees')
+      const res = await fetch('https://coffee-store-auth-server.vercel.app/coffees')
       return res.json()
     }
   })

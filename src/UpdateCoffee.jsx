@@ -9,10 +9,10 @@ const UpdateCoffee = () => {
     const { name, chef, supplier, taste, category, price, details, photo_url } = coffee;
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/coffees/${id}`)
-        .then(res => setCoffee(res.data))
+        axios.get(`https://coffee-store-auth-server.vercel.app/coffees/${id}`)
+            .then(res => setCoffee(res.data))
 
-        // fetch(`http://localhost:3000/coffees/${id}`)
+        // fetch(`https://coffee-store-auth-server.vercel.app/coffees/${id}`)
         //     .then(res => res.json())
         //     .then(data => {
         //         setCoffee(data)
@@ -35,11 +35,11 @@ const UpdateCoffee = () => {
 
         const coffee = { name, chef, supplier, taste, category, price, details, photo_url };
 
-        axios.put(`http://localhost:3000/coffees/${id}`,coffee)
-        .then(res => console.log(res.data))
+        axios.put(`https://coffee-store-auth-server.vercel.app/coffees/${id}`, coffee)
+            .then(res => console.log(res.data))
 
 
-        // fetch(`http://localhost:3000/coffees/${id}`, {
+        // fetch(`https://coffee-store-auth-server.vercel.app/coffees/${id}`, {
         //     method: 'PUT',
         //     headers: {
         //         'Content-Type': 'application/json'
